@@ -19,6 +19,14 @@ botaoAdicionar.addEventListener('click', (evento) => {
     const nomeItem = document.createElement('p');
     nomeItem.innerText = itens.value;
 
+    inputCheckbox.addEventListener('click', function(){
+         if (inputCheckbox.checked) {
+             nomeItem.style.textDecoration = 'line-through';
+         } else {
+             nomeItem.style.textDecoration = 'none'
+         }
+    })
+
     containerItemdaLista.appendChild(inputCheckbox);
     containerItemdaLista.appendChild(nomeItem);
 
@@ -32,9 +40,25 @@ botaoAdicionar.addEventListener('click', (evento) => {
     const hora = new Date().toLocaleTimeString('pt-BR', {
         hour: '2-digit',
         minute: '2-digit',
-        second: '2-digit'
-    })
-    
+    });
 
+    const dataItem = document.createElement('p');
+    dataItem.innerText = `${diaDaSemana} (${data}) às ${hora}`;
+    dataItem.classList.add('texto-data');
+    containerLista.appendChild(dataItem);  
 
-})
+    verificarListaVazia()
+});
+
+const mensagemListaVazia = document.querySelector('.mensagem-lista-vazia');
+
+function verificarListaVazia() {
+    const itensDaLista = containerLista.querySelectorAll('li')
+    if (itensDaLista.length === 0) {
+        mensagemListaVazia.style.display = 'block'
+    } else {
+       mensagemListaVazia.style.display = 'none' 
+    }
+}
+
+verificarListaVazia()

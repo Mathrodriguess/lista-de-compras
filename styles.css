@@ -121,6 +121,7 @@ ul {
 .checked {
     background-color: var(--preto);
     position: relative;
+
 }
 
 .checkbox-customizado.checked::after {
